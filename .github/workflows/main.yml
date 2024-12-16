@@ -9,8 +9,6 @@
 name: Make Passwall run files
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
@@ -116,6 +114,7 @@ jobs:
         uses: softprops/action-gh-release@v2.1.0
         with:
           tag_name: ${{ env.LATEST_TAG }}
+          name: "PassWall-${{ env.LATEST_TAG }}"
           files: makeself/passwall_*.run
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
